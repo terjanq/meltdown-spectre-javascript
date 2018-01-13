@@ -1,0 +1,297 @@
+
+<html lang="zh-cn">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>“幽灵” CPU 漏洞在线检测工具</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <link rel="stylesheet" href="style.css">
+
+        <script type="text/javascript" src="jquery.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+
+
+        <meta name="description" content="检测你的浏览器是否易于遭受“幽灵” CPU 漏洞攻击的工具">
+
+
+        <script>
+
+
+            function get_browser_language()
+            {
+                var lang = navigator.language || navigator.userLanguage;
+                var short_lang = lang.substr(0,2);
+                return short_lang;
+            }
+
+            var user_language = get_browser_language();
+
+
+            function output_testing_start()
+            {
+                if(user_language == 'zh'){
+                    ouput_notification("开始进行测试...");
+                }else{
+                    ouput_notification("Start checking...");
+                }
+
+            }
+
+            function output_not_info_leak()
+            {
+                if(user_language == 'zh') {
+                    ouput_notification("");
+                    ouput_notification("经过我们的测试");
+                    ouput_green_notification("您的浏览器环境暂时不容易遭受 Spectre 漏洞的攻击");
+                    update_check_result("未发现风险");
+                }else{
+                    ouput_notification("");
+                    ouput_notification("According to our checking");
+                    ouput_green_notification("Your browser is NOT VULNERABLE to Spectre");
+                    update_check_result("NOT VULNERABLE");
+                }
+                ouput_notification("");
+            }
+
+            function output_info_leak()
+            {
+                if(user_language == 'zh') {
+                    ouput_notification("");
+                    ouput_notification("测试完成");
+                    ouput_red_notification("您的浏览器环境容易遭受 Spectre 漏洞的攻击");
+                    ouput_notification("请及时进行系统及浏览器的相关修复");
+                    ouput_notification("");
+                    update_red_check_result("发现风险");
+                }else{
+                    ouput_notification("");
+                    ouput_notification("Check finished");
+                    ouput_red_notification("Your browser is VULNERABLE to Spectre");
+                    ouput_notification("Please update your browser immediately");
+                    ouput_notification("");
+                    update_red_check_result("VULNERABLE");
+
+                }
+            }
+
+            function output_cache_log(num)
+            {
+                if(user_language == 'zh') {
+                    ouput_notification("正在进行 " + num + "M 缓存测试,请稍候...");
+                }else{
+                    ouput_notification("Processing " + num + "M cache, waiting...");
+                }
+            }
+
+
+        	function ouput_red_log(str) {
+                    console.log('%c ' + str, 'color: red; font-weight: bold;');
+            }
+
+        	function ouput_notification(noti_log) {
+        		    //console.log("ouput_notification");
+                    $("#notification").append("$ " + noti_log +"<br>");
+
+                }
+
+                function ouput_red_notification(noti_log) {
+        		    //console.log("ouput_notification");
+                    $("#notification").append("<span style=\"color: red\">$ " + noti_log +"</span><br>");
+
+                }
+
+                function ouput_green_notification(noti_log) {
+        		    //console.log("ouput_notification");
+                    $("#notification").append("<span style=\"color: #66ff66\">$ " + noti_log +"</span><br>");
+
+                }
+
+
+                function output_result(result_log) {
+                	//console.log("output_result");
+                    $("#scan_result").append( "$ " + result_log + "<br>" );
+                }
+
+
+                function notify_start()
+                {
+                    start_scan();
+                    main();
+                }
+
+                function start_scan() {
+
+                }
+
+                function reset_scanning()
+                {
+                	console.log("reset_scanning");
+                    finish_count = 0;
+                }
+
+                function enable_recheck() {
+                    $(".progressbar").click(function(){
+                        //location.reload();
+                        $(".progressbar").off('click');
+                        started = true;
+                        if(user_language == 'zh') {
+                            $(".progressbar .gaugemeter h3").html("检测中<br>请稍候");
+                        }else{
+                            $(".progressbar .gaugemeter h3").text("Checking...");
+                        }
+                        $(".progressbar .gaugemeter h3").css("color", "black");
+                        console.log("clear console")
+                        $("#notification").text("");
+
+
+                        notify_start();
+                    });
+                    
+                }
+                
+                
+                function update_check_result(result_string) {
+                    if(user_language == 'zh') {
+                        $(".progressbar .gaugemeter h3").html(result_string + "<br><a>点击重新检测</a>");
+                    }else{
+                        $(".progressbar .gaugemeter h3").html(result_string + "<br><a>Click to recheck</a>");
+                    }
+        	        enable_recheck();
+                    
+                }
+
+                function update_red_check_result(result_string) {
+                    if(user_language == 'zh') {
+                        $(".progressbar .gaugemeter h3").html(result_string + "<br><a>点击重新检测</a>");
+                    }else{
+                        $(".progressbar .gaugemeter h3").html(result_string + "<br><a>Click to recheck</a>");
+                    }
+        	        $(".progressbar .gaugemeter h3").css("color", "red");
+        	        enable_recheck()
+
+                }
+
+
+            $(document).ready(function()
+            {
+
+                $('body').height(window.innerHeight-10);
+
+
+                target_string = "Xuanwu Lab";
+                finish_count = 0;
+
+                started = false;
+
+                $(".progressbar").click(function(){
+                    $(".progressbar").off('click');
+                    started = true;
+                    if(user_language == 'zh') {
+                        $(".progressbar .gaugemeter h3").html("检测中<br>请稍候");
+                    }else{
+                        $(".progressbar .gaugemeter h3").text("Checking...");
+                    }
+
+
+                    notify_start();
+                    
+                });
+                
+                $("button").click(function() {
+
+                });
+
+
+                if(user_language != 'zh') {
+
+                    $('.progressbar .gaugemeter h3').html("Click to<br> Check");
+                    $('.text-editor .title').text("Spectre Vulnerability Check");
+                    $('.text-editor .title').text("Spectre Vulnerability Check");
+                    $(".declaration h3").text("Notes");
+                    document.title = 'Spectre CPU Vulnerability Online Checker';
+                    $('meta[name=description]').remove();
+                    $('head').append( '<meta name="description" content="Check whether your browser is vulnerable to Spectre vulnerability or not">' );
+
+                    var eng_notes = "The most dangerous threat of the recent Spectre Attack(CVE-2017-5753、CVE-2017-5715) for individual users is attacking from web browser to steal your personal accounts and information, such as your emails, dropbox, etc.<br>" +
+                        "<br>" +
+                        "This tool can detect whether your browser is vulnerable to Spectre Attack and can be easily exploited.<br>" +
+                        "<br>" +
+                        "If the result is VULNERABLE, it is definitely true. However, if the result is NOT VULNERABLE, it doesn't mean your browser is absolutely not vulnerable because there might be other unknown attacking methods. <br>" +
+                        "<br>" +
+                        "This tool is still in developing, stay tuned...";
+
+                    $(".declaration_text").html(eng_notes);
+                    $(".declaration_author").html("2018-01-08<br> Tencent's Xuanwu Lab");
+                    $(".declaration_ref").html("Reference:<br>[1] https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html<br>\n" +
+                        "[2] https://meltdownattack.com/meltdown.pdf<br>\n" +
+                        "[3] https://spectreattack.com/spectre.pdf");
+
+                }
+
+            });
+
+
+        </script>
+    </head>
+    <body >
+        <img src="/special/spectre/images/small_logo.png" height="0" width="0" >
+        <div class="xuanwulog">
+            <img src="/special/spectre/images/logo.png" >
+        </div>
+    <header>
+
+
+        <div class="progressbar">
+
+            <div class="gaugemeter" id="circle_progress"
+                 data-percent="0"
+                 data-append="%"
+                 data-size="200"
+                 data-theme="White"
+                 data-back="RGBa(0,0,0,.1)"
+                 data-animate_gauge_colors="1"
+                 data-animate_text_colors="1"
+                 data-width="15"
+                 data-label="Scanning"
+                 data-label_color="#FFF"
+                 data-stripe="2"
+            ><h3>点击<br>开始检测</h3></div>
+        </div>
+
+        <div class="logoutput">
+            <div class="text-editor">
+                <div class="title-bar">
+                    <span class="title">
+                        Spectre 漏洞检测
+                    </span>
+
+                </div>
+                <div class="text-body">
+                    <pre id="notification"></pre>
+                    <span id="typed"></span>
+                    <pre id="scan_result"></pre>
+                </div>
+            </div>
+        </div>
+        <div class="declaration">
+            <h3>说明</h3>
+            <p class="declaration_text">
+近期披露的名为“幽灵”的 CPU 漏洞（Spectre，CVE-2017-5753、CVE-2017-5715）对个人用户最大的风险是通过浏览器发起攻击，进而窃取邮箱、网盘等账户信息。<br>
+<br>
+此工具可检测您的浏览器是否易于遭受“幽灵”漏洞的攻击。<br>
+<br>
+如果检测结果表明您的浏览器易于遭受攻击，则说明风险真实存在。但由于可能存在未知攻击方法，所以如果检测结果表示您的浏览器不易遭受攻击，并不一定表明您的系统不存在漏洞。<br>
+<br>
+此工具还在完善中，请保持关注。<br>
+</p>
+            <p class="declaration_author" align="right">2018-01-08<br> 腾讯安全玄武实验室</p>
+            <p></p>
+            <p class="declaration_ref" align="left">参考引用:<br>[1] https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html<br>
+[2] https://meltdownattack.com/meltdown.pdf<br>
+[3] https://spectreattack.com/spectre.pdf</p>
+        </div>
+
+
+    </header>
+
+    </body>
+</html>

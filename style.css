@@ -1,0 +1,302 @@
+.gaugemeter{
+	position:        Relative;
+	Text-Align:      Center;
+	Overflow:        Hidden;
+	Cursor:          Default;
+}
+
+.gaugemeter SPAN,
+    .gaugemeter B{
+    	Margin:          0 23%;
+    	Width:           5%;
+    	Position:        Absolute;
+    	Text-align:      Center;
+    	Display:         Inline-Block;
+    	Color:           RGBa(0,0,0,.8);
+    	Font-Weight:     100;
+    	Font-Family:     "Open Sans", Arial;
+    	Overflow:        Hidden;
+    	White-Space:     NoWrap;
+    	Text-Overflow:   Ellipsis;
+}
+.gaugemeter[data-style="Semi"] B{
+	Margin:          0 10%;
+	Width:           80%;
+}
+
+.gaugemeter S,
+    .gaugemeter U{
+    	Text-Decoration: None;
+    	Font-Size:       .49em;
+    	Opacity:         .5;
+}
+
+.gaugemeter B{
+	Color:           Black;
+	Font-Weight:     300;
+	Opacity:         .8;
+}
+
+
+
+.gaugemeter{
+    Position:				Relative;
+    Text-Align:			Center;
+    Overflow:				Hidden;
+    Cursor:				Default;
+
+}
+
+
+
+.gaugemeter SPAN,
+.gaugemeter B{
+    Margin:				0 23%;
+    Width:					54%;
+    Position:				Absolute;
+    Text-Align:			Center;
+    Display:				Inline-Block;
+    Color:					RGBa(0,0,0,.8);
+    Font-Weight:			100;
+    Font-Family:			"Open Sans", Arial;
+    Overflow:				Hidden;
+    White-Space:			NoWrap;
+    Text-Overflow:		Ellipsis;
+}
+.gaugemeter[data-style="Semi"] B{
+    Margin:				0 10%;
+    Width:					80%;
+}
+
+.gaugemeter S,
+.gaugemeter U{
+    Text-Decoration:	None;
+    Font-Size:			.60em;
+    Font-Weight:			200;
+    Opacity:				.6;
+}
+
+.gaugemeter B{
+    color:	Black;
+    font-weight: 200;
+    opacity: .8;
+}
+
+
+body{
+    margin:	0;
+    padding: 0;
+    width:	100%;
+    overflow-x:  hidden;
+}
+
+
+hr{
+    Clear:					Both;
+    Margin-Top:			230px;
+    Margin-Bottom:		10px;
+    Width:					100%;
+    Border:				0;
+    Height:				1px;
+    Background:			#21B4F9;
+}
+
+.progressbar .gaugemeter{
+    Float:					Left;
+}
+
+
+
+.progressbar {
+    min-height: 240px;
+}
+
+.progressbar h3{
+
+}
+
+body{
+    width:					100%;
+    z-Index:				1;
+    Top:					0;
+    Margin:				0;
+    Padding:				1px 0 0 0;
+    height: 1000px;
+    Text-Align:			Center;
+    /*Background:			#21B4F9;
+    Background:			#2C94E0;
+    Background: 			Linear-Gradient(45deg, #2C94E0, #21B4F9), URL(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAnCAQAAAAmqpm+AAAAUUlEQVR4AWMgDvyXJEoV7/AwjnckGzdq3Khxo8apDQvj/kuCIS9OqIYCefFD4tzG+F+NGFW0Mo7ysBvNFaPGjRo3apzkIDfuP89/XipASQgEAF4fpQGYXVnnAAAAAElFTkSuQmCC);
+    Background-Blend-Mode: Lighten;
+    background-size: cover;
+    Box-Shadow:			0 0 20px 0 rgba(0,0,0,.4);
+    -Moz-Animation:		BluePrint 60s Infinite;
+    -Webkit-Animation:	BluePrint 60s Infinite;
+    Animation:				BluePrint 60s Infinite;*/
+}
+
+@-moz-keyframes BluePrint{
+0%					{Background-Position: 0 0;}
+100%					{Background-Position: 1100% 100%;}
+}
+
+@-webkit-keyframes BluePrint{
+0%					{Background-Position: 0 0;}
+100%					{Background-Position: 1100% 100%;}
+}
+
+@keyframes BluePrint{
+0%					{Background-Position: 0 0;}
+100%					{Background-Position: -100% 100%;}
+}
+
+.progressbar h1{
+    Color:					White;
+    Font:					Normal 400 28px/28px "Helvetica", Arial;
+    Margin:				30px Auto 20px Auto;
+    Text-Shadow:			0 2px 10px rgba(0,0,0,.3);
+}
+
+.progressbar p{
+    Color:					White;
+    Font:					Normal 200 18px/22px "Helvetica", Arial;
+    Margin:				0 Auto;
+    Text-Shadow:			0 1px 5px rgba(0,0,0,.3);
+}
+
+.progressbar .gaugemeter{
+    /*background-image: 	url(/images/loading2.gif);*/
+    Background-Blend-Mode: Lighten;
+    background-size: contain;
+    width: 230px;
+    min-height: 200px;
+    border-radius: 15px;
+}
+
+.progressbar .gaugemeter h3{
+    padding: 15px;
+    font-size: 29px;
+    color: black;
+    border: 3px solid #0173ba;
+    border-radius: 25px;
+    min-height: 90px;
+    vertical-align: middle;
+}
+
+.progressbar .loadingbar{
+
+}
+
+.progressbar{
+    width:	230px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+
+}
+
+.progressbar img{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.text-editor{
+    display: block;
+    margin: auto;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.8) 0px 20px 70px;
+    clear: both;
+    overflow: hidden;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+}
+
+.title-bar{
+    padding: 5px 0;
+    font-family: "Lucida Grande", sans-serif;
+    font-size: 0.75em;
+    text-align: center;
+    text-shadow: rgba(255, 255, 255, 0.8) 0px 1px 0px;
+    background-color: #f8f8f8;
+    background-image: -webkit-linear-gradient(top, #e8e8e8, #bcbbbc);
+    background-image: -moz-linear-gradient(top, #e8e8e8, #bcbbbc);
+    background-image: linear-gradient(top, #e8e8e8, #bcbbbc);
+    box-shadow: inset rgba(255, 255, 255, 0.7) 0px 1px 1px;
+    border-bottom: #6a6a6a 1px solid;
+}
+
+
+.text-body{
+    min-height: 250px;
+    background-color: rgba(0, 0, 0, 0.85);
+    padding: 10px;
+    color: #f0f0f0;
+    text-shadow: #000 0px 1px 0px;
+    font-family: "Consolas", "Courier New", "Courier";
+    font-size: 1.45em;
+    line-height: 1.40em;
+    font-weight: 500;
+    text-align: left;
+    overflow: hidden;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+}
+
+#notification, #scan_result{
+    font-family: "Consolas", "Courier New", "Courier";
+}
+
+
+.declaration{
+
+    display: block;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.8) 0px 20px 70px;
+    clear: both;
+    overflow: hidden;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+    color: black;
+
+}
+
+.declaration p{
+    padding: 10px;
+}
+
+.declaration .declaration_text{
+    text-align: left;
+}
+
+.xuanwulog{
+    margin-top: 0px;
+    float: left;
+}
+
+.xuanwulog img{
+    margin-top: 0px;
+    width: 200px;
+    height: 60px;
+}
+
+
+.progressbar .gaugemeter h3 a{
+    font-size: 16px;
+    font-family: "Microsoft YaHei", "Consolas", "Courier New", "Courier";
+    color: black;
+}
