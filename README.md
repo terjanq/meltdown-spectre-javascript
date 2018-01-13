@@ -1,4 +1,4 @@
-# Meltdown-JavaScript
+# Meltdown & Spectre JavaScript checker
 This is a meltdown & spectre checker found online: https://codepen.io/internweb/full/XVZmQW/
 
 This one didn't work for me because new Worker() refused to initialize inside the coderpen.io domain.
